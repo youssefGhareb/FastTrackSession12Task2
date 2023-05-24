@@ -73,8 +73,11 @@ const data = [
     },
 ];
 
+//onclick of card
 function cardClick(btn) {
+    //search fro card with matching id of data-id attribute of card clicked
     let card = data.find(x => x.id == btn.dataset.id);
+    // edit modal body with card data
     $(".modal-body").html(`
         <div class="row align-items-center">
             <div class="col-md-5">
@@ -86,9 +89,11 @@ function cardClick(btn) {
             </div>
         </div>
     `);
+    // show modal
     $("#cardModal").show();
 }
 
+// text truncation function
 function truncateText(str, charLimit) {
     var truncatedText;
     if (str.length >= charLimit) {
@@ -101,6 +106,7 @@ function truncateText(str, charLimit) {
 }
 
 $(document).ready(function () {
+    // loop on array of objects and dynamically add cards to HTML
     for (let i = 0; i < data.length; i++) {
         $("#data-row").append(`
             <div class="col-md-3">
@@ -131,6 +137,8 @@ $(document).ready(function () {
         `)
     }
 
+
+    // hide Modal
     $("#modalClose").click(function(){
         $("#cardModal").hide();
     })
